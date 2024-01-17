@@ -3,6 +3,7 @@ package data_jpa_homework.task_1.domain;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.util.Objects;
@@ -12,7 +13,7 @@ import java.util.Objects;
 public class BankTransaction {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "Id")
   private int id;
 
@@ -104,15 +105,13 @@ public class BankTransaction {
 
   @Override
   public String toString() {
-    return String.format("Info about transaction:\n" +
-            "BankTransaction{" +
-            "\n\tid=%d," +
-            "\n\tdate='%s'," +
-            "\n\ttype='%s'," +
-            "\n\tamount=%.2f," +
-            "\n\tsender='%s'," +
-            "\n\trecipient='%s'" +
-            "\n}",
-        id, date, type, amount, sender, recipient);
+    return "BankTransaction{" +
+        "id=" + id +
+        ", date='" + date + '\'' +
+        ", type='" + type + '\'' +
+        ", amount=" + amount +
+        ", sender='" + sender + '\'' +
+        ", recipient='" + recipient + '\'' +
+        '}';
   }
 }
